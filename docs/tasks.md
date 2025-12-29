@@ -220,7 +220,7 @@ typescript
 
 ---
 
-## [] M0.3: Tailwind CSS 및 디자인 시스템 설정
+## [x] M0.3: Tailwind CSS 및 디자인 시스템 설정
 
 ### 컨텍스트 및 목표
 
