@@ -637,7 +637,7 @@ typescript
 
 ---
 
-## [] M1.3: 카드 컴포넌트 생성
+## [x] M1.3: 카드 컴포넌트 생성
 
 ### 컨텍스트 및 목표
 
@@ -718,20 +718,56 @@ CardContent.displayName = 'CardContent'`
 
 ### 인수 조건 (Acceptance Criteria)
 
-- [ ]  기본 카드가 올바른 패딩과 그림자를 가짐
-- [ ]  clickable prop으로 호버/클릭 효과 추가 가능
-- [ ]  CardHeader, CardTitle, CardContent가 조합 가능
-- [ ]  반응형으로 작동함
+- [x]  기본 카드가 올바른 패딩과 그림자를 가짐
+- [x]  clickable prop으로 호버/클릭 효과 추가 가능
+- [x]  CardHeader, CardTitle, CardContent가 조합 가능
+- [x]  반응형으로 작동함
 
 ### 자가 수정 지침
 
-- [ ]  그림자가 Design System의 shadow-sm과 일치하는가?
-- [ ]  호버 시 translateY 값이 자연스러운가?
-- [ ]  카드 내부 요소들의 간격이 적절한가?
+- [x]  그림자가 Design System의 shadow-sm과 일치하는가?
+- [x]  호버 시 translateY 값이 자연스러운가?
+- [x]  카드 내부 요소들의 간격이 적절한가?
 
 ---
 
-## [] M1.4: 레이아웃 및 네비게이션 구조
+## [x] M1.4: Dialog(Modal) 컴포넌트
+
+### 컨텍스트 및 목표
+
+사용자와의 상호작용(삭제 확인, 정보 입력 등)을 처리하기 위한 모달 다이얼로그를 구현합니다.
+
+### 사용자 스토리
+
+`사용자로서,
+중요한 작업을 수행하기 전에 확인 창을 보고 싶습니다.
+그래서 실수로 데이터를 삭제하는 것을 방지할 수 있습니다.`
+
+### 기술 명세
+
+1. **Radix UI Dialog 사용**
+   - `@radix-ui/react-dialog` 기반 구현
+   - 접근성(Accessibility) 준수
+
+2. **구성 요소**
+   - `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogFooter`, `DialogTitle`, `DialogDescription`
+
+### 인수 조건 (Acceptance Criteria)
+
+- [x]  모달이 열릴 때 배경(Overlay)이 어두워짐
+- [x]  애니메이션(Fade in/out, Zoom in/out)이 적용됨
+- [x]  ESC 키를 누르면 닫힘
+- [x]  모바일 환경에서 반응형으로 크기가 조절됨 (최대 너비 제한 등)
+- [x]  `DialogTitle`이 포함되어 접근성 경고가 없음
+
+### 자가 수정 지침
+
+- [x]  `z-index` 관리가 올바른가? (Header보다 위에 떠야 함)
+- [x]  닫기 버튼(X)과 취소 버튼이 모두 작동하는가?
+
+---
+
+## [] M1.5: 레이아웃 및 네비게이션 구조
 
 ### 컨텍스트 및 목표
 

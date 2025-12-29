@@ -1,4 +1,4 @@
-import { Button, Input, Textarea } from '@/components/ui'
+import { Button, Input, Textarea, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from '@/components/ui'
 
 export default function Home() {
   return (
@@ -38,6 +38,64 @@ export default function Home() {
             <h3 className="text-xl font-semibold">Textarea</h3>
             <Textarea label="자기소개" placeholder="당신의 이야기를 들려주세요..." helperText="최소 10자 이상 입력해주세요." />
           </div>
+        </div>
+
+        {/* Card Component Test */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle>프로젝트 생성</CardTitle>
+              <CardDescription>새로운 자서전 프로젝트를 시작해보세요.</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-secondary-600">
+                AI 인터뷰를 통해 쉽고 편하게 당신의 삶을 기록할 수 있습니다.
+              </p>
+            </CardContent>
+            <CardFooter>
+              <Button size="sm">시작하기</Button>
+            </CardFooter>
+          </Card>
+
+          <Card clickable className="w-full">
+            <CardHeader>
+              <CardTitle>인터랙티브 카드</CardTitle>
+              <CardDescription>클릭 가능한 카드입니다 (Hover 효과).</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-secondary-600">
+                목록 아이템이나 선택 가능한 요소에 사용됩니다.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+
+        {/* Dialog Component Test */}
+        <div className="w-full max-w-4xl text-center p-8 bg-white rounded-2xl shadow-sm">
+          <div className="text-secondary-500 font-semibold mb-4 text-left">Dialog Component Test</div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button size="lg">모달 열기</Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>프로젝트 삭제</DialogTitle>
+                <DialogDescription>
+                  정말로 이 프로젝트를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="py-4">
+                <p className="text-secondary-600">삭제할 프로젝트: <strong>나의 첫 번째 자서전</strong></p>
+              </div>
+              <DialogFooter>
+                <DialogClose asChild>
+                  <Button variant="ghost">취소</Button>
+                </DialogClose>
+                <Button variant="destructive">삭제하기</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
 
         {/* Color Palette Test */}
