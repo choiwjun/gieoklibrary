@@ -767,7 +767,7 @@ CardContent.displayName = 'CardContent'`
 
 ---
 
-## [] M1.5: 레이아웃 및 네비게이션 구조
+## [x] M1.5: 레이아웃 및 네비게이션 구조
 
 ### 컨텍스트 및 목표
 
