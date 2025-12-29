@@ -335,7 +335,7 @@ javascript
 
 ---
 
-## [] M0.4: 기본 TypeScript 타입 정의
+## [x] M0.4: TypeScript 타입 정의
 
 ### 컨텍스트 및 목표
 
@@ -383,16 +383,16 @@ typescript
 
 ### 인수 조건 (Acceptance Criteria)
 
-- [ ]  `database.types.ts` 파일이 생성됨
-- [ ]  주요 테이블에 대한 타입이 export됨
-- [ ]  TypeScript 컴파일러가 타입을 인식함
-- [ ]  IDE 자동완성이 정상 작동함
+- [x]  `Database` 타입이 정의되어 Supabase 클라이언트에서 자동 완성됨
+- [x]  `User`, `BiographyProject` 등 주요 비즈니스 엔티티 타입이 export됨
+- [x]  API 응답 및 공통 Props를 위한 유틸리티 타입이 정의됨
+- [x]  타입 정의 파일(`database.types.ts`)이 생성됨
 
 ### 자가 수정 지침
 
-- [ ]  타입명이 일관된 네이밍 규칙을 따르는가?
-- [ ]  null, undefined 처리가 적절한가?
-- [ ]  Enum 타입이 필요한 곳에 정의되었는가?
+- [x]  `any` 타입 사용을 최소화했는가?
+- [x]  null 처리가 올바르게 타입에 반영되었는가? (Supabase는 nullable 필드가 많음)
+- [x]  Enum 타입(UserType 등)이 문자열 리터럴 유니온으로 정의되었는가?
 
 ---
 
