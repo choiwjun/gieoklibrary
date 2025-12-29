@@ -21,7 +21,7 @@ export default function DashboardPage() {
                     </CardHeader>
                     <CardContent>
                         <p className="text-lg font-medium text-primary-600">
-                            "어린 시절 가장 기억에 남는 친구는 누구인가요?"
+                            &ldquo;어린 시절 가장 기억에 남는 친구는 누구인가요?&rdquo;
                         </p>
                     </CardContent>
                 </Card>

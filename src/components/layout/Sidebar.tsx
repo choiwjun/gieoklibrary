@@ -43,7 +43,9 @@ export function Sidebar() {
 
             <div className="border-t border-secondary-200 p-4">
                 <button
-                    onClick={() => console.log('logout')} // TODO: Implement logout
+                    onClick={() => {
+                        // TODO: Implement logout
+                    }}
                     className="flex w-full items-center gap-3 rounded-xl px-4 py-3.5 text-lg font-medium text-secondary-600 hover:bg-secondary-50 hover:text-secondary-900 transition-colors"
                 >
                     <LogOut className="h-6 w-6 text-secondary-400" />
