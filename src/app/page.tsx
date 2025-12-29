@@ -1,3 +1,5 @@
+import { Button, Input, Textarea } from '@/components/ui'
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-secondary-50 p-6">
@@ -13,12 +15,29 @@ export default function Home() {
 
         {/* Action Buttons */}
         <div className="flex flex-col gap-4 sm:flex-row">
-          <button className="bg-primary-500 hover:bg-primary-600 text-white px-8 py-4 rounded-xl text-xl font-bold transition-colors shadow-lg touch-target-lg">
+          <Button size="lg" className="shadow-lg">
             자서전 시작하기
-          </button>
-          <button className="bg-white hover:bg-secondary-50 text-secondary-900 border-2 border-secondary-200 px-8 py-4 rounded-xl text-xl font-bold transition-colors touch-target-lg">
+          </Button>
+          <Button variant="outline" size="lg">
             둘러보기
-          </button>
+          </Button>
+        </div>
+
+        {/* Form Components Test */}
+        <div className="w-full max-w-2xl bg-white p-8 rounded-2xl shadow-sm space-y-8 text-left">
+          <div className="text-secondary-500 font-semibold mb-4">Form Components Test</div>
+
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold">Input</h3>
+            <Input label="이메일 (Default)" placeholder="example@email.com" helperText="자주 사용하는 이메일을 입력해주세요." />
+            <Input label="이름 (Large - Senior)" size="lg" placeholder="홍길동" />
+            <Input label="전화번호 (Error State)" placeholder="010-1234-5678" error="올바른 전화번호 형식이 아닙니다." hasError />
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold">Textarea</h3>
+            <Textarea label="자기소개" placeholder="당신의 이야기를 들려주세요..." helperText="최소 10자 이상 입력해주세요." />
+          </div>
         </div>
 
         {/* Color Palette Test */}
@@ -39,5 +58,5 @@ export default function Home() {
         </div>
       </main>
     </div>
-  );
+  )
 }

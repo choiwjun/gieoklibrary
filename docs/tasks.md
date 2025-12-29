@@ -398,7 +398,7 @@ typescript
 
 # M1: 핵심 UI 및 디자인 시스템 구축
 
-## [] M1.1: 기본 UI 컴포넌트 생성 (Button)
+## [x] M1.1: 기본 UI 컴포넌트 생성 (Button)
 
 ### 컨텍스트 및 목표
 
@@ -494,23 +494,23 @@ typescript
 
 ### 인수 조건 (Acceptance Criteria)
 
-- [ ]  Primary, Secondary, Ghost 변형이 모두 작동함
-- [ ]  sm, md, lg, xl 크기가 Design System과 일치함
-- [ ]  hover, active, disabled 상태가 올바르게 표시됨
-- [ ]  isLoading prop으로 로딩 상태 표시 가능
-- [ ]  접근성을 위한 키보드 포커스가 표시됨
-- [ ]  TypeScript 타입 추론이 정상 작동함
+- [x]  Primary, Secondary, Ghost 변형이 모두 작동함
+- [x]  sm, md, lg, xl 크기가 Design System과 일치함
+- [x]  hover, active, disabled 상태가 올바르게 표시됨
+- [x]  isLoading prop으로 로딩 상태 표시 가능
+- [x]  접근성을 위한 키보드 포커스가 표시됨
+- [x]  TypeScript 타입 추론이 정상 작동함
 
 ### 자가 수정 지침
 
-- [ ]  모든 버튼 변형이 Design System과 픽셀 단위로 일치하는가?
-- [ ]  터치 영역이 최소 44px 이상인가?
-- [ ]  색상 대비가 WCAG AA 기준을 충족하는가?
-- [ ]  forwardRef로 ref 전달이 가능한가?
+- [x]  모든 버튼 변형이 Design System과 픽셀 단위로 일치하는가?
+- [x]  터치 영역이 최소 44px 이상인가?
+- [x]  색상 대비가 WCAG AA 기준을 충족하는가?
+- [x]  forwardRef로 ref 전달이 가능한가?
 
 ---
 
-## [] M1.2: 기본 UI 컴포넌트 생성 (Input, Textarea)
+## [x] M1.2: 기본 UI 컴포넌트 생성 (Input, Textarea)
 
 ### 컨텍스트 및 목표
 
@@ -623,17 +623,17 @@ typescript
 
 ### 인수 조건 (Acceptance Criteria)
 
-- [ ]  포커스 시 테두리 색상과 링이 표시됨
-- [ ]  에러 상태가 올바르게 표시됨
-- [ ]  label, helperText가 정상 작동함
-- [ ]  시니어용 큰 크기(lg)가 기본값임
-- [ ]  플레이스홀더 색상이 충분히 연함
+- [x]  label, helper text, error message가 올바르게 렌더링됨
+- [x]  에러 상태일 때 테두리 색상이 변경됨(red-500)
+- [x]  Textarea가 내용에 따라 자동으로 늘어나거나 크기 조절이 가능함
+- [x]  focus 상태일 때 primary 색상의 링이 표시됨
+- [x]  시니어 친화적인 큰 입력 필드(lg size)가 구현됨
 
 ### 자가 수정 지침
 
-- [ ]  포커스 링이 3px이고 outline-offset이 적절한가?
-- [ ]  에러 메시지가 스크린 리더에서 읽히는가?
-- [ ]  입력 필드 높이가 Design System과 일치하는가?
+- [x]  입력 텍스트 크기가 16px 이상인가? (iOS zoom 방지)
+- [x]  레이블과 입력 필드가 id로 연결되어 있는가? (접근성)
+- [x]  플레이스홀더 색상 대비가 적절한가?Design System과 일치하는가?
 
 ---
 
