@@ -180,6 +180,56 @@ export default async function ChapterDetailPage({ params }: ChapterDetailPagePro
             )}
           </div>
 
+          {/* 감정 분석 */}
+          {chapter.emotions && chapter.emotions.length > 0 && (
+            <div className="mt-8 pt-8 border-t border-secondary-200">
+              <h3 className="text-lg font-bold text-secondary-900 mb-4">이야기 속 감정</h3>
+              <div className="flex flex-wrap gap-3">
+                {chapter.emotions.map((emotion: string, index: number) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center px-5 py-2.5 rounded-full bg-primary-100 text-primary-700 text-sm font-semibold border border-primary-200"
+                  >
+                    {emotion}
+                  </span>
+                ))}
+              </div>
+
+              {/* 감정 점수 시각화 */}
+              {chapter.emotion_scores && (
+                <div className="mt-6 space-y-3">
+                  {Object.entries(chapter.emotion_scores as Record<string, number>).map(
+                    ([emotion, score]) => {
+                      const emotionLabels: Record<string, string> = {
+                        joy: '기쁨',
+                        sadness: '슬픔',
+                        nostalgia: '그리움',
+                        pride: '자부심',
+                        gratitude: '감사',
+                      }
+                      return (
+                        <div key={emotion} className="flex items-center gap-3">
+                          <span className="text-sm font-medium text-secondary-700 w-16">
+                            {emotionLabels[emotion] || emotion}
+                          </span>
+                          <div className="flex-1 h-2 bg-secondary-100 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full transition-all duration-500"
+                              style={{ width: `${score}%` }}
+                            />
+                          </div>
+                          <span className="text-sm font-semibold text-secondary-600 w-10 text-right">
+                            {score}
+                          </span>
+                        </div>
+                      )
+                    }
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+
           {/* 키워드 */}
           {chapter.keywords && chapter.keywords.length > 0 && (
             <div className="mt-8 pt-8 border-t border-secondary-200">

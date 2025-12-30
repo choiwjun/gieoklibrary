@@ -2711,7 +2711,7 @@ export function AIProcessingStatus({ chapterId }: { chapterId: string }) {
 
 # M4: AI 처리 및 고급 기능
 
-## [] M4.1: OpenAI Whisper API 연동 - 음성→텍스트 변환
+## [x] M4.1: OpenAI Whisper API 연동 - 음성→텍스트 변환
 
 ### 컨텍스트 및 목표
 
@@ -2749,7 +2749,7 @@ export function AIProcessingStatus({ chapterId }: { chapterId: string }) {
 
 ---
 
-## [] M4.2: AI 텍스트 편집 및 개선
+## [x] M4.2: AI 텍스트 편집 및 개선
 
 ### 컨텍스트 및 목표
 
@@ -2785,7 +2785,7 @@ export function AIProcessingStatus({ chapterId }: { chapterId: string }) {
 
 ---
 
-## [] M4.3: AI 감정 분석 및 키워드 추출
+## [x] M4.3: AI 감정 분석 및 키워드 추출
 
 ### 컨텍스트 및 목표
 

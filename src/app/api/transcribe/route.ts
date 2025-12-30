@@ -87,14 +87,46 @@ export async function POST(request: NextRequest) {
       throw updateError
     }
 
-    // 챕터에 원본 텍스트 저장 (임시)
-    await supabase
-      .from('biography_chapters')
-      .update({
-        ai_generated_content: transcription.text,
-        word_count: transcription.text.length,
-      })
-      .eq('id', chapterId)
+    // GPT-4로 텍스트 편집 호출
+    try {
+      const editResponse = await fetch(
+        `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/edit-content`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            chapterId: chapterId,
+            audioRecordingId: audioRecordingId,
+          }),
+        }
+      )
+
+      if (!editResponse.ok) {
+        console.error('Content editing failed:', await editResponse.text())
+        // 편집 실패해도 transcription은 저장됨
+        await supabase
+          .from('biography_chapters')
+          .update({
+            ai_generated_content: transcription.text,
+            word_count: transcription.text.length,
+            status: 'completed',
+          })
+          .eq('id', chapterId)
+      }
+    } catch (editError) {
+      console.error('Content editing request failed:', editError)
+      // 편집 실패 시 원본 텍스트라도 저장
+      await supabase
+        .from('biography_chapters')
+        .update({
+          ai_generated_content: transcription.text,
+          word_count: transcription.text.length,
+          status: 'completed',
+        })
+        .eq('id', chapterId)
+    }
 
     return NextResponse.json({
       success: true,
