@@ -117,20 +117,42 @@ export function ChapterRecorder({ projectId, userId, chapterNumber }: ChapterRec
       if (chapterError) throw chapterError
 
       // 3. 오디오 레코드 생성
-      const { error: audioError } = await supabase.from('audio_recordings').insert({
-        chapter_id: chapter.id,
-        user_id: userId,
-        file_url: uploadData.path,
-        transcription_status: 'pending',
-      })
+      const { data: audioRecord, error: audioError } = await supabase
+        .from('audio_recordings')
+        .insert({
+          chapter_id: chapter.id,
+          user_id: userId,
+          file_url: uploadData.path,
+          transcription_status: 'pending',
+        })
+        .select()
+        .single()
 
       if (audioError) throw audioError
 
-      // 4. AI 처리 큐에 추가 (실제 구현은 M4에서)
-      // TODO: OpenAI Whisper API로 음성→텍스트 변환
+      // 4. OpenAI Whisper API로 음성→텍스트 변환
+      try {
+        const transcribeResponse = await fetch('/api/transcribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            chapterId: chapter.id,
+            audioRecordingId: audioRecord.id,
+          }),
+        })
 
-      alert('녹음이 저장되었습니다. AI가 처리 중입니다.')
-      router.push(`/biography/${projectId}`)
+        if (!transcribeResponse.ok) {
+          console.error('Transcription failed:', await transcribeResponse.text())
+        }
+      } catch (transcribeError) {
+        console.error('Transcription request failed:', transcribeError)
+        // 변환 실패해도 녹음은 저장됨
+      }
+
+      alert('녹음이 저장되었습니다. AI가 이야기를 정리하고 있습니다.')
+      router.push(`/biography/${projectId}/chapters`)
     } catch (error: unknown) {
       const err = error as Error
       console.error('저장 오류:', error)
