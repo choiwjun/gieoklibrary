@@ -47,13 +47,13 @@ export default function LoginPage() {
         return
       }
 
-      // 2. 프로필 업데이트 (last_login_at, login_count)
+      // 2. 프로필 업데이트 및 온보딩 체크
       if (data.user) {
         try {
-          // 현재 login_count 조회
+          // 프로필 조회 (온보딩 완료 여부 포함)
           const { data: profile, error: fetchError } = await supabase
             .from('user_profiles')
-            .select('login_count')
+            .select('login_count, onboarding_completed')
             .eq('user_id', data.user.id)
             .single()
 
@@ -73,13 +73,22 @@ export default function LoginPage() {
           if (updateError) {
             console.error('프로필 업데이트 오류:', updateError)
           }
+
+          // 3. 온보딩 완료 여부에 따라 리다이렉트
+          if (profile?.onboarding_completed) {
+            router.push('/dashboard')
+          } else {
+            router.push('/onboarding/welcome')
+          }
+          router.refresh()
+          return
         } catch (profileError) {
-          // 프로필 업데이트 실패해도 로그인은 성공으로 처리
+          // 프로필 처리 중 오류 발생 시 기본적으로 대시보드로 이동
           console.error('프로필 처리 중 오류:', profileError)
         }
       }
 
-      // 3. 성공 시 대시보드로 이동
+      // 4. 프로필 조회 실패 시 기본 대시보드로 이동
       router.push('/dashboard')
       router.refresh()
     } catch (error: unknown) {
